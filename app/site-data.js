@@ -24,7 +24,7 @@ export const tours = [
     eyebrow: 'Friends • Families • Barkada',
     duration: 'Custom itinerary',
     price: 'Ask for current rate',
-    image: '/images/group-boat.png',
+    image: '/images/group-snorkel.png',
     description: 'Easy group planning with coordinated transport, lodging, activities, and one point of contact.',
     features: ['Group-friendly', 'Transport coordination', 'Shared activities', 'Flexible budgets']
   },
@@ -43,8 +43,8 @@ export const tours = [
 export const destinations = [
   { name: 'Philippine Islands', copy: 'Turquoise water, easy escapes, unforgettable weekends.', image: '/images/island-boat.png' },
   { name: 'Bohol & Cebu', copy: 'Culture, beaches, food, and easy multi-stop itineraries.', image: '/images/group-snorkel.png' },
-  { name: 'Vietnam', copy: 'City energy, mountain scenery, food, and guided experiences.', image: '/images/hanoi-sapa.png' },
-  { name: 'Worldwide', copy: 'International flights, hotels, and custom itinerary support.', image: '/images/group-boat.png' }
+  { name: 'Ocean Adventures', copy: 'Snorkeling, diving, island hopping, and laid-back days by the water.', image: '/images/scuba.png' },
+  { name: 'Group Escapes', copy: 'Flexible trips for friends, families, reunions, and shared adventures.', image: '/images/group-snorkel.png' }
 ];
 
 export const services = [
