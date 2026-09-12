@@ -39,7 +39,7 @@ export default function HomePage() {
       if (!response.ok) throw new Error(result.error || 'Unable to send inquiry right now.');
 
       setFormSuccess(true);
-      setFormMessage('Inquiry sent successfully. Nice Travel & Tours will get back to you soon.');
+      setFormMessage('Inquiry received. Nice Travel & Tours will personally follow up with you soon.');
       form.reset();
     } catch (error) {
       setFormSuccess(false);
@@ -51,7 +51,7 @@ export default function HomePage() {
 
   return (
     <main>
-      <div className="top-strip">Personal travel planning • Philippines & worldwide • Human help from inquiry to departure</div>
+      <div className="top-strip">Personal travel planning • Philippines & worldwide • Service-first care from first question to homecoming</div>
 
       <header className="site-header">
         <div className="container nav-wrap">
@@ -81,7 +81,7 @@ export default function HomePage() {
             <span className="eyebrow light">Boutique travel planning from Pasig, Philippines</span>
             <h1>Travel beautifully.<br />We’ll handle the details.</h1>
             <p>
-              Flights, hotels, handpicked tours, transfers, and travel assistance — planned around your real dates, real budget, and real priorities.
+              Flights, hotels, handpicked tours, transfers, and travel assistance — backed by attentive, personal customer care before, during, and after your planning.
             </p>
             <div className="hero-actions">
               <a className="button primary" href="#contact">Start Planning</a>
@@ -89,14 +89,14 @@ export default function HomePage() {
             </div>
             <div className="trust-row">
               <span>✓ Personalized help</span>
-              <span>✓ Local & international trips</span>
-              <span>✓ Human support</span>
+              <span>✓ Thoughtful communication</span>
+              <span>✓ Human support from start to finish</span>
             </div>
           </div>
           <aside className="hero-planner card-shadow">
             <span className="planner-kicker">Quick trip brief</span>
             <h2>Tell us where you want to go.</h2>
-            <p>We’ll respond with options tailored to your trip.</p>
+            <p>We’ll personally review your plans and respond with options tailored to your trip.</p>
             <div className="planner-grid">
               <a href="#contact"><strong>Destination</strong><span>Beach, city, country</span></a>
               <a href="#contact"><strong>Travel dates</strong><span>Exact or flexible</span></a>
@@ -113,7 +113,7 @@ export default function HomePage() {
           <div><strong>Flights</strong><span>Domestic & international</span></div>
           <div><strong>Hotels</strong><span>Practical to premium</span></div>
           <div><strong>Tours</strong><span>Custom & curated</span></div>
-          <div><strong>Documents</strong><span>Passport & visa guidance</span></div>
+          <div><strong>Customer Care</strong><span>Personal help throughout</span></div>
         </div>
       </section>
 
@@ -184,7 +184,7 @@ export default function HomePage() {
               <span className="kicker">One trusted point of contact</span>
               <h2>More than a booking. A smoother trip.</h2>
             </div>
-            <p>Instead of juggling suppliers and websites, let one travel partner help coordinate the major pieces.</p>
+            <p>Instead of juggling suppliers and websites, let one travel partner help coordinate the major pieces — and stay available when you need a real person.</p>
           </div>
           <div className="service-grid premium-services">
             {services.map((service) => (
@@ -204,15 +204,15 @@ export default function HomePage() {
             <img src="/images/group-boat.png" alt="Travelers enjoying a group boat trip" />
           </div>
           <div className="story-copy">
-            <span className="kicker">Why travelers come back</span>
-            <h2>Personal service beats another browser tab.</h2>
-            <p>Travel can get complicated fast. Nice Travel & Tours keeps the planning human — helping with questions, comparing practical options, and keeping your itinerary connected.</p>
+            <span className="kicker">Service is the difference</span>
+            <h2>Customer care is part of the trip.</h2>
+            <p>At Nice Travel & Tours, good customer service is not an extra. It is central to the experience. We believe travelers deserve thoughtful answers, clear communication, personal attention, and someone who genuinely cares whether the trip goes well.</p>
             <div className="stat-grid">
-              <div><strong>1 point</strong><span>of contact</span></div>
-              <div><strong>Flexible</strong><span>trip planning</span></div>
-              <div><strong>Local</strong><span>Philippines-based support</span></div>
+              <div><strong>Responsive</strong><span>communication</span></div>
+              <div><strong>Personal</strong><span>attention</span></div>
+              <div><strong>Human</strong><span>help when it matters</span></div>
             </div>
-            <a href="#contact" className="text-link">Talk through your trip →</a>
+            <a href="#contact" className="text-link">Talk with us about your trip →</a>
           </div>
         </div>
       </section>
@@ -221,7 +221,8 @@ export default function HomePage() {
         <div className="container">
           <div className="center-head">
             <span className="kicker">Traveler feedback</span>
-            <h2>Good trips start with good communication.</h2>
+            <h2>Service travelers remember.</h2>
+            <p>Great travel planning is about more than reservations. It is about how you are treated along the way.</p>
           </div>
           <div className="review-grid">
             {testimonials.map((item) => (
@@ -240,7 +241,7 @@ export default function HomePage() {
           <div>
             <span className="kicker">Good to know</span>
             <h2>Common questions, clear answers.</h2>
-            <p>Still unsure? Send an inquiry and tell us what you’re trying to do.</p>
+            <p>Still unsure? Send an inquiry. A real person will review what you send and help you figure out the next step.</p>
           </div>
           <div className="faq-list">
             {faqs.map((item) => (
@@ -258,14 +259,14 @@ export default function HomePage() {
           <div className="contact-copy">
             <span className="kicker light">Start with a conversation</span>
             <h2>Your next trip starts here.</h2>
-            <p>Send the basics. We’ll help turn them into practical travel options.</p>
+            <p>Send the basics. Every inquiry is personally reviewed so we can help turn your plans into practical travel options.</p>
             <div className="contact-details">
               <a href={`mailto:${brand.email}`}>✉ {brand.email}</a>
               <a href="tel:+639977884297">☎ {brand.phone}</a>
               <a href={brand.facebook} target="_blank" rel="noreferrer">ⓕ Nice Travel & Tours on Facebook</a>
               <span>📍 {brand.location}</span>
             </div>
-            <div className="contact-note">No pressure. No booking commitment. Just tell us what you have in mind.</div>
+            <div className="contact-note">You should never feel like just another booking number. We care about the questions, details, and follow-through that make travel feel easier.</div>
           </div>
           <form className="inquiry-form premium-form" onSubmit={submitInquiry}>
             <div className="form-header">
@@ -283,7 +284,7 @@ export default function HomePage() {
             <label>Number of travelers<input name="travelers" type="number" min="1" placeholder="2" /></label>
             <label>What would make this trip great?<textarea name="message" rows="5" placeholder="Departure city, budget range, hotel style, activities, special requests..." /></label>
             <button className="button primary full" type="submit" disabled={isSubmitting}>{isSubmitting ? 'Sending...' : 'Send My Inquiry'}</button>
-            {formMessage ? <small className={formSuccess ? 'form-note success' : 'form-note error'}>{formMessage}</small> : <small>We’ll use your details only to respond to this travel inquiry.</small>}
+            {formMessage ? <small className={formSuccess ? 'form-note success' : 'form-note error'}>{formMessage}</small> : <small>We’ll use your details only to respond to this travel inquiry. If you provide an email address, we’ll immediately confirm that we received it.</small>}
           </form>
         </div>
       </section>
@@ -297,7 +298,7 @@ export default function HomePage() {
               <span>{brand.tagline}</span>
             </div>
           </div>
-          <p>Thoughtful travel planning for the Philippines and beyond.</p>
+          <p>Thoughtful travel planning and personal customer care for the Philippines and beyond.</p>
           <a className="button footer-cta" href="#contact">Plan a Trip</a>
         </div>
         <div className="container footer-bottom">
