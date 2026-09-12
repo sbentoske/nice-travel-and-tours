@@ -1,4 +1,5 @@
 import './globals.css';
+import './visual-fixes.css';
 
 export const metadata = {
   title: {
