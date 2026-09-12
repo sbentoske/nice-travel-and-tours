@@ -1,29 +1,31 @@
 'use client';
 
+import { useState } from 'react';
+
 const tours = [
   {
-    title: 'Hanoi & Sapa',
-    meta: 'Vietnam package • May 29 – Jun 1 • Cebu departure',
-    price: '₱40,888 / person',
-    image: '/images/hanoi-sapa.png',
-    tag: 'Featured International',
-    blurb: '4-day all-in package with airfare, hotel stay, and guided itinerary.'
+    title: 'Island Getaway',
+    meta: 'Beach escape • Local or international options',
+    price: 'Ask for current rate',
+    image: '/images/island-boat.png',
+    tag: 'Featured Getaway',
+    blurb: 'Tell us your dates and preferred departure city for current package options.'
   },
   {
-    title: 'Boracay Escape',
-    meta: '3D2N island getaway',
-    price: 'From ₱3,536',
-    image: '/images/boracay-promo.png',
-    tag: 'Beach Favorite',
-    blurb: 'A quick tropical break with hotel, transfers, and beach time.'
+    title: 'Group Adventure',
+    meta: 'Perfect for friends, families, and small groups',
+    price: 'Ask for current rate',
+    image: '/images/group-boat.png',
+    tag: 'Group Favorite',
+    blurb: 'Great for barkada trips, reunions, and shared island experiences.'
   },
   {
-    title: 'Baguio Tour',
-    meta: '3 days / 2 nights • seasonal schedules',
-    price: 'From ₱2,899',
-    image: '/images/baguio-tour.png',
-    tag: 'Popular Local Tour',
-    blurb: 'Cool-weather sightseeing, gardens, food spots, and group fun.'
+    title: 'Scuba & Water Activities',
+    meta: 'Sea tours • add-on experiences available',
+    price: 'Ask for current rate',
+    image: '/images/scuba.png',
+    tag: 'Activity Add-On',
+    blurb: 'Ask about diving, snorkeling, transfers, and hotel combinations.'
   }
 ];
 
@@ -37,10 +39,10 @@ const services = [
 ];
 
 const destinations = [
-  ['Boracay', '/images/boracay-promo.png'],
-  ['Baguio', '/images/baguio-tour.png'],
-  ['Hanoi & Sapa', '/images/hanoi-sapa.png'],
-  ['Island Adventures', '/images/scuba.png']
+  ['Island Adventures', '/images/island-boat.png'],
+  ['Group Tours', '/images/group-boat.png'],
+  ['Scuba Trips', '/images/scuba.png'],
+  ['Beach Fun', '/images/group-snorkel.png']
 ];
 
 const regions = [
@@ -57,14 +59,45 @@ const reviews = [
 ];
 
 export default function HomePage() {
-  function submitInquiry(e) {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formMessage, setFormMessage] = useState('');
+  const [formSuccess, setFormSuccess] = useState(false);
+
+  async function submitInquiry(e) {
     e.preventDefault();
-    const data = new FormData(e.currentTarget);
-    const subject = encodeURIComponent(`Travel inquiry: ${data.get('destination') || 'New trip'}`);
-    const body = encodeURIComponent(
-      `Name: ${data.get('name')}\nEmail / Phone: ${data.get('contact')}\nDestination: ${data.get('destination')}\nTravel dates: ${data.get('dates')}\nTravelers: ${data.get('travelers')}\n\nMessage:\n${data.get('message')}`
-    );
-    window.location.href = `mailto:nayztravelandtours@gmail.com?subject=${subject}&body=${body}`;
+    const form = e.currentTarget;
+    const data = new FormData(form);
+
+    try {
+      setIsSubmitting(true);
+      setFormMessage('Sending inquiry...');
+      setFormSuccess(false);
+
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: data.get('name') || '',
+          contact: data.get('contact') || '',
+          destination: data.get('destination') || '',
+          dates: data.get('dates') || '',
+          travelers: data.get('travelers') || '',
+          message: data.get('message') || ''
+        })
+      });
+
+      const result = await response.json();
+      if (!response.ok) throw new Error(result.error || 'Unable to send inquiry right now.');
+
+      setFormSuccess(true);
+      setFormMessage('Inquiry sent successfully. Nice Travel & Tours will get back to you soon.');
+      form.reset();
+    } catch (error) {
+      setFormSuccess(false);
+      setFormMessage(error.message || 'Unable to send inquiry right now.');
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   return (
@@ -136,8 +169,8 @@ export default function HomePage() {
               <h2>Popular tour packages</h2>
             </div>
             <p>
-              Real packages and promos from Nice Travel & Tours. Ask for current availability,
-              custom dates, or a personalized quote.
+              Sample travel ideas from Nice Travel & Tours. Ask for current availability,
+              custom dates, package inclusions, and a personalized quote.
             </p>
           </div>
           <div className="tour-grid">
@@ -299,8 +332,8 @@ export default function HomePage() {
             </div>
             <label>Number of travelers<input name="travelers" type="number" min="1" placeholder="2" /></label>
             <label>Tell us about your trip<textarea name="message" rows="5" placeholder="Budget, preferred airport, hotel style, special requests..." /></label>
-            <button className="button primary full" type="submit">Send Inquiry</button>
-            <small>This opens your email app with the inquiry details filled in.</small>
+            <button className="button primary full" type="submit" disabled={isSubmitting}>{isSubmitting ? 'Sending...' : 'Send Inquiry'}</button>
+            {formMessage ? <small className={formSuccess ? 'form-note success' : 'form-note error'}>{formMessage}</small> : <small>Fill out the form and it will email Nice Travel & Tours directly.</small>}
           </form>
         </div>
       </section>
