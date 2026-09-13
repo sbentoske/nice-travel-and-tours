@@ -58,8 +58,7 @@ export const services = [
 
 export const testimonials = [
   { quote: 'Very responsive in any travel inquiry.', source: 'Facebook review' },
-  { quote: 'Excellent.', source: 'Facebook review' },
-  { quote: 'We’re so happy you enjoyed your Cebu–Bohol trip. Thanks for the photos and lovely feedback!', source: 'Recent traveler feedback' }
+  { quote: 'Excellent.', source: 'Facebook review' }
 ];
 
 export const faqs = [
