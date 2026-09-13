@@ -7,6 +7,15 @@ const iconMap = {
   plane: '✈', hotel: '▣', map: '⌖', shield: '◈', passport: '▤', car: '◆'
 };
 
+const packagePreview = [
+  ['Great Britain', 'England • Scotland • Wales', 'linear-gradient(135deg,#163968,#7390b5)'],
+  ['Hanoi & Sapa', 'Vietnam', 'linear-gradient(135deg,#0f7e70,#52bba7)'],
+  ['Bangkok', 'Thailand', 'linear-gradient(135deg,#d18212,#f3b847)'],
+  ['Dubai', 'UAE', 'linear-gradient(135deg,#0b6796,#20a9c8)'],
+  ['Bali', 'Indonesia', 'linear-gradient(135deg,#347a6f,#7abb9e)'],
+  ['Boracay', 'Philippines', 'linear-gradient(135deg,#1497cf,#61cee6)']
+];
+
 export default function HomePage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formMessage, setFormMessage] = useState('');
@@ -64,6 +73,7 @@ export default function HomePage() {
           </a>
           <nav>
             <a href="#tours">Tours</a>
+            <a href="/packages">Packages</a>
             <a href="#destinations">Destinations</a>
             <a href="#services">Services</a>
             <a href="/passport">Passport Assistance</a>
@@ -85,7 +95,7 @@ export default function HomePage() {
             </p>
             <div className="hero-actions">
               <a className="button primary" href="#contact">Start Planning</a>
-              <a className="button glass" href="#tours">Explore Experiences</a>
+              <a className="button glass" href="/packages">Explore Packages</a>
             </div>
             <div className="trust-row">
               <span>✓ Personalized help</span>
@@ -151,6 +161,37 @@ export default function HomePage() {
               </article>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="section" id="packages" style={{paddingTop: 30, background: 'linear-gradient(180deg,#f7fbff,#ffffff)'}}>
+        <div className="container">
+          <div className="section-head editorial">
+            <div>
+              <span className="kicker">Example tour packages</span>
+              <h2>Ideas for your next adventure.</h2>
+            </div>
+            <div style={{maxWidth: 520}}>
+              <p style={{marginTop: 0}}>Browse sample itineraries from Europe, Asia, city escapes and beach getaways. We removed old dates and prices so you can ask us for the latest options.</p>
+              <a className="button dark" href="/packages">View All 10 Packages →</a>
+            </div>
+          </div>
+
+          <a href="/packages" aria-label="View example tour packages" style={{display:'block', borderRadius:28, padding:22, background:'white', boxShadow:'0 22px 60px rgba(15,52,88,.12)', border:'1px solid rgba(15,52,88,.08)'}}>
+            <div style={{display:'grid', gridTemplateColumns:'repeat(auto-fit,minmax(220px,1fr))', gap:14}}>
+              {packagePreview.map(([title, region, background]) => (
+                <div key={title} style={{minHeight:180, borderRadius:20, padding:22, color:'#fff', background, display:'flex', flexDirection:'column', justifyContent:'flex-end', position:'relative', overflow:'hidden'}}>
+                  <span style={{fontSize:10, textTransform:'uppercase', letterSpacing:'.16em', fontWeight:900, opacity:.9}}>{region}</span>
+                  <strong style={{fontFamily:'Georgia, Times New Roman, serif', fontSize:30, lineHeight:1.05, marginTop:7}}>{title}</strong>
+                  <span style={{fontSize:12, marginTop:12, opacity:.9}}>Contact us for latest pricing</span>
+                </div>
+              ))}
+            </div>
+            <div style={{display:'flex', justifyContent:'space-between', gap:20, alignItems:'center', flexWrap:'wrap', marginTop:20, padding:'4px 4px 0'}}>
+              <div><strong style={{fontSize:18}}>10 sample packages available</strong><div style={{fontSize:13, color:'#64748b', marginTop:4}}>Great Britain, China, Thailand, Dubai, Vietnam, Indochina, Bali, Boracay, Singapore & Malaysia and more.</div></div>
+              <span className="button primary">See Detailed Packages →</span>
+            </div>
+          </a>
         </div>
       </section>
 
@@ -305,6 +346,7 @@ export default function HomePage() {
         <div className="container footer-bottom">
           <div className="footer-links">
             <a href="#tours">Tours</a>
+            <a href="/packages">Packages</a>
             <a href="#destinations">Destinations</a>
             <a href="#services">Services</a>
             <a href="/passport">Passport Assistance</a>
