@@ -1,7 +1,7 @@
 export const brand = {
   name: 'Nice Travel & Tours',
   tagline: 'Your travel dream is our passion',
-  location: 'Pasig, Philippines',
+  location: 'Rizal, Philippines',
   email: 'nayztravelandtours@gmail.com',
   phone: '+63 997 788 4297',
   facebook: 'https://www.facebook.com/nicetravelandtours/'
