@@ -37,6 +37,17 @@ function Icon({ type }) {
   return icons[type] || icons.file;
 }
 
+function PassportCard({ className }) {
+  return (
+    <div className={`${styles.passport} ${className}`}>
+      <span>PILIPINAS</span>
+      <div className={styles.passportSeal}>✺</div>
+      <strong>PASAPORTE</strong>
+      <small>▭</small>
+    </div>
+  );
+}
+
 export default function PassportPage() {
   const serviceIcons = ['calendar','file','refresh','user','package','heart'];
   return (
@@ -48,11 +59,7 @@ export default function PassportPage() {
             <div><strong>{brand.name}</strong><span>{brand.tagline}</span></div>
           </a>
           <nav className={styles.nav}>
-            <a href="/">Home</a>
-            <a href="/#services">Services</a>
-            <a href="/#destinations">Destinations</a>
-            <a href="/#reviews">Reviews</a>
-            <a href="/#contact">Contact</a>
+            <a href="/">Home</a><a href="/#services">Services</a><a href="/#destinations">Destinations</a><a href="/#reviews">Reviews</a><a href="/#contact">Contact</a>
             <a className={styles.navCta} href="/#contact">Get in Touch →</a>
           </nav>
         </div>
@@ -65,14 +72,13 @@ export default function PassportPage() {
             <h1>Passport assistance,<br/><em>made simple.</em></h1>
             <p>From first-time applications to renewals, we’re here to help. Get personal guidance, appointment assistance, document support and step-by-step service — so you can travel with confidence.</p>
             <a className={styles.primary} href="/#contact">Ask About Passport Help →</a>
-            <div className={styles.trust}>
-              <span><Icon type="shield"/>Trusted Service</span>
-              <span><Icon type="user"/>Personal Assistance</span>
-              <span><Icon type="plane"/>Travel with Confidence</span>
-            </div>
+            <div className={styles.trust}><span><Icon type="shield"/>Trusted Service</span><span><Icon type="user"/>Personal Assistance</span><span><Icon type="plane"/>Travel with Confidence</span></div>
           </div>
-          <div className={styles.heroImageWrap}>
-            <img src="/images/passport-assistance.png" alt="Philippine passport assistance" />
+          <div className={styles.heroVisual} aria-label="Philippine passports ready for travel">
+            <div className={styles.airportBlur}><span>✈</span></div>
+            <div className={styles.marbleTable} />
+            <PassportCard className={styles.passportBack} />
+            <PassportCard className={styles.passportFront} />
             <div className={styles.heroNote}>More journeys<br/>ahead.</div>
           </div>
         </div>
@@ -80,58 +86,24 @@ export default function PassportPage() {
 
       <section className={styles.servicesSection}>
         <div className={styles.container}>
-          <div className={styles.sectionTitleRow}>
-            <div><span className={styles.kickerDark}>Our passport assistance services</span><h2>Complete Support for a Hassle-Free Process</h2></div>
-            <p>Real People.<br/>Real Assistance.<br/>Real Journeys.</p>
-          </div>
-          <div className={styles.serviceGrid}>
-            {services.map(([title, copy], i) => (
-              <article className={styles.serviceCard} key={title}>
-                <div className={styles.serviceIcon}><Icon type={serviceIcons[i]} /></div>
-                <h3>{title}</h3><p>{copy}</p>
-              </article>
-            ))}
-          </div>
+          <div className={styles.sectionTitleRow}><div><span className={styles.kickerDark}>Our passport assistance services</span><h2>Complete Support for a Hassle-Free Process</h2></div><p>Real People.<br/>Real Assistance.<br/>Real Journeys.</p></div>
+          <div className={styles.serviceGrid}>{services.map(([title, copy], i) => <article className={styles.serviceCard} key={title}><div className={styles.serviceIcon}><Icon type={serviceIcons[i]} /></div><h3>{title}</h3><p>{copy}</p></article>)}</div>
         </div>
       </section>
 
       <section className={styles.storySection}>
         <div className={styles.container}>
           <div className={styles.storyGrid}>
-            <div className={styles.customerPhoto}>
-              <img src="/images/passport-success.jpg" alt="Customer proudly holding his Philippine passport" />
-              <div className={styles.photoQuote}>“Fast, easy<br/>and very helpful!”</div>
-            </div>
-            <div className={styles.storyCopy}>
-              <span className={styles.kickerDark}>Real people. Real journeys.</span>
-              <h2>Another Happy Traveler</h2>
-              <p>We love seeing the moment a customer finally has a passport in hand. Nice Travel & Tours is here to make the steps leading up to it feel easier, clearer, and more personal.</p>
-              <div className={styles.stars}>★★★★★</div>
-            </div>
-            <aside className={styles.quotePanel}>
-              <div className={styles.bigQuote}>“</div>
-              <p>Your next journey starts with a valid passport. We’re here to help you get there.</p>
-              <strong>Nice Travel & Tours</strong><span>Your travel partner every step of the way.</span>
-            </aside>
+            <div className={styles.customerPhoto}><img src="/images/passport-success.jpg" alt="Customer proudly holding his Philippine passport" /><div className={styles.photoQuote}>“Fast, easy<br/>and very helpful!”</div></div>
+            <div className={styles.storyCopy}><span className={styles.kickerDark}>Real people. Real journeys.</span><h2>Another Happy Traveler</h2><p>There’s something special about finally having your passport in hand. We’re proud to help make the steps leading up to that moment easier, clearer, and more personal.</p><div className={styles.stars}>★★★★★</div></div>
+            <aside className={styles.quotePanel}><div className={styles.bigQuote}>“</div><p>Your next journey starts with a valid passport. We’re here to help you get there.</p><strong>Nice Travel & Tours</strong><span>Your travel partner every step of the way.</span></aside>
           </div>
         </div>
       </section>
 
-      <section className={styles.processSection} id="how-it-works">
-        <div className={styles.container}>
-          <div className={styles.processHead}><span className={styles.kickerDark}>How it works</span><h2>Just 3 Simple Steps</h2></div>
-          <div className={styles.steps}>{steps.map(([num,title,copy]) => <article key={num}><span>{num}</span><div><h3>{title}</h3><p>{copy}</p></div></article>)}</div>
-        </div>
-      </section>
+      <section className={styles.processSection} id="how-it-works"><div className={styles.container}><div className={styles.processHead}><span className={styles.kickerDark}>How it works</span><h2>Just 3 Simple Steps</h2></div><div className={styles.steps}>{steps.map(([num,title,copy]) => <article key={num}><span>{num}</span><div><h3>{title}</h3><p>{copy}</p></div></article>)}</div></div></section>
 
-      <section className={styles.ctaSection}>
-        <div className={styles.ctaOverlay} />
-        <div className={styles.ctaInner}>
-          <div className={styles.ctaScript}>Same Passport.<br/>A Bigger World.</div>
-          <div className={styles.ctaCenter}><h2>Let Us Help with Your Passport Today</h2><a href="/#contact">Ask About Passport Help →</a></div>
-          <div className={styles.ctaIcons}><span><Icon type="plane"/>Explore More</span><span><Icon type="globe"/>Travel Further</span><span><Icon type="heart"/>Create Brighter Tomorrows</span></div>
-        </div>
-      </section>
+      <section className={styles.ctaSection}><div className={styles.ctaOverlay} /><div className={styles.ctaInner}><div className={styles.ctaScript}>Same Passport.<br/>A Bigger World.</div><div className={styles.ctaCenter}><h2>Let Us Help with Your Passport Today</h2><a href="/#contact">Ask About Passport Help →</a></div><div className={styles.ctaIcons}><span><Icon type="plane"/>Explore More</span><span><Icon type="globe"/>Travel Further</span><span><Icon type="heart"/>Create Brighter Tomorrows</span></div></div></section>
 
       <section className={styles.notice}><strong>Important:</strong> Nice Travel & Tours provides assistance and guidance. Official requirements, appointments, processing times, approvals, and passport issuance are controlled by the relevant government authority.</section>
     </main>
