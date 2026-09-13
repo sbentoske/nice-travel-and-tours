@@ -78,7 +78,6 @@ export default function HomePage() {
         <img className="hero-bg" src="/images/island-boat.png" alt="Traveler exploring tropical islands by boat" />
         <div className="container hero-content">
           <div className="hero-copy">
-            <span className="eyebrow light">Boutique travel planning from Pasig, Philippines</span>
             <h1>Travel beautifully.<br />We’ll handle the details.</h1>
             <p>
               Flights, hotels, handpicked tours, transfers, and travel assistance — backed by attentive, personal customer care before, during, and after your planning.
