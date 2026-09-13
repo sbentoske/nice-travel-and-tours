@@ -1,5 +1,6 @@
 import './globals.css';
 import './visual-fixes.css';
+import './service-icons.css';
 
 export const metadata = {
   title: {
