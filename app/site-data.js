@@ -52,7 +52,7 @@ export const services = [
   { icon: 'hotel', title: 'Hotels', copy: 'Handpicked accommodation options from practical stays to special-occasion escapes.' },
   { icon: 'map', title: 'Tours & Itineraries', copy: 'Ready-made and custom trips with sightseeing, transfers, activities, and local support.' },
   { icon: 'shield', title: 'Travel Insurance', copy: 'Coverage options for added confidence before and during your trip.' },
-  { icon: 'passport', title: 'Passport & Visa Assistance', copy: 'Friendly guidance through common travel-document requirements and appointment steps.' },
+  { icon: 'passport', title: 'Passport Assistance', copy: 'Friendly guidance for new applications, renewals, common document requirements, and appointment steps.' },
   { icon: 'car', title: 'Transport', copy: 'Van, car, airport transfer, and group transportation planning when available.' }
 ];
 
@@ -65,5 +65,5 @@ export const faqs = [
   { q: 'Can you create a custom itinerary?', a: 'Yes. Share your destination, dates, group size, departure city, and budget range and we can build options around your trip.' },
   { q: 'Do you handle flights and hotels separately?', a: 'Yes. You can ask for flights only, hotels only, or combine them with tours, transfers, and activities.' },
   { q: 'Why do prices say “Ask for current rate”?', a: 'Airfare, hotel inventory, supplier rates, and foreign exchange can change quickly. We quote current pricing for your actual travel dates.' },
-  { q: 'Can you help with passport or visa requirements?', a: 'Nice Travel & Tours can assist with common requirements and appointment guidance. Final requirements and approvals remain with the relevant government authority.' }
+  { q: 'Can you help with passport requirements?', a: 'Yes. Nice Travel & Tours can assist with common passport requirements, new applications, renewals, and appointment guidance. Official requirements and passport issuance remain with the relevant government authority.' }
 ];
