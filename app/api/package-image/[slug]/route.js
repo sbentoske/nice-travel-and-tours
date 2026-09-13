@@ -10,7 +10,7 @@ const images = {
   'bali': new URL('../../../../package-images/bali.b64', import.meta.url),
   'boracay': new URL('../../../../package-images/boracay.b64', import.meta.url),
   'singapore-malaysia': new URL('../../../../package-images/singapore-malaysia.b64', import.meta.url),
-  'bangkok-city-escape': new URL('../../../../package-images/bangkok-city-escape.b64', import.meta.url)
+  'bangkok-city-escape': new URL('../../../../package-images/bangkok.b64', import.meta.url)
 };
 
 export async function GET(_request, { params }) {
