@@ -66,6 +66,7 @@ export default function HomePage() {
             <a href="#tours">Tours</a>
             <a href="#destinations">Destinations</a>
             <a href="#services">Services</a>
+            <a href="/visa">Visa Assistance</a>
             <a href="#reviews">Reviews</a>
             <a href="#faq">FAQ</a>
             <a href="#contact" className="nav-cta">Plan My Trip</a>
@@ -191,6 +192,7 @@ export default function HomePage() {
                 <div className="service-icon">{iconMap[service.icon]}</div>
                 <h3>{service.title}</h3>
                 <p>{service.copy}</p>
+                {service.icon === 'passport' ? <a className="text-link" href="/visa">Explore visa services →</a> : null}
               </article>
             ))}
           </div>
@@ -305,6 +307,7 @@ export default function HomePage() {
             <a href="#tours">Tours</a>
             <a href="#destinations">Destinations</a>
             <a href="#services">Services</a>
+            <a href="/visa">Visa Assistance</a>
             <a href="#reviews">Reviews</a>
             <a href="#faq">FAQ</a>
           </div>
