@@ -42,9 +42,43 @@ export default async function PackageDetailPage({ params }) {
 
       <section className={styles.detailSection}>
         <div className={styles.detailGrid}>
-          <div className={styles.flyerCard}>
-            <img src={pkg.image} alt={`${pkg.title} sample tour package details`} />
+          <div>
+            <div className={styles.flyerCard}>
+              <img src={pkg.image} alt={`${pkg.title} sample tour package details`} />
+            </div>
+
+            <section className={styles.fullDetails}>
+              <span className={styles.kicker}>Trip details</span>
+              <h2>Sample itinerary</h2>
+              <div className={styles.itineraryList}>
+                {pkg.itinerary?.map(([title, copy]) => (
+                  <article className={styles.itineraryItem} key={title}>
+                    <h3>{title}</h3>
+                    <p>{copy}</p>
+                  </article>
+                ))}
+              </div>
+
+              <div className={styles.detailColumns}>
+                <div className={styles.detailBox}>
+                  <h3>What’s included</h3>
+                  <ul>{pkg.included?.map((item) => <li key={item}>{item}</li>)}</ul>
+                </div>
+                <div className={styles.detailBox}>
+                  <h3>Not included</h3>
+                  <ul>{pkg.excluded?.map((item) => <li key={item}>{item}</li>)}</ul>
+                </div>
+              </div>
+
+              {pkg.notes?.length ? (
+                <div className={styles.notesBox}>
+                  <h3>Good to know</h3>
+                  {pkg.notes.map((item) => <p key={item}>{item}</p>)}
+                </div>
+              ) : null}
+            </section>
           </div>
+
           <aside className={styles.info}>
             <span className={styles.kicker}>Sample itinerary</span>
             <h2>Interested in this trip?</h2>
