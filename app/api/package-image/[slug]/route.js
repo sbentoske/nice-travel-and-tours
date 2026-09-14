@@ -27,10 +27,11 @@ export async function GET(_request, { params }) {
 
     const base64 = (await response.text()).trim();
     const bytes = Buffer.from(base64, 'base64');
+    const contentType = base64.startsWith('UklG') ? 'image/webp' : 'image/jpeg';
 
     return new Response(bytes, {
       headers: {
-        'Content-Type': 'image/jpeg',
+        'Content-Type': contentType,
         'Content-Length': String(bytes.length),
         'Cache-Control': 'no-store, max-age=0'
       }
