@@ -44,7 +44,9 @@ export default async function PackageDetailPage({ params }) {
         <div className={styles.detailGrid}>
           <div>
             <div className={styles.flyerCard}>
-              <img src={pkg.image} alt={`${pkg.title} sample tour package details`} />
+              <div className={styles.flyerLabel}>Detailed sample package</div>
+              <img src={`${pkg.image}?v=20260914`} alt={`${pkg.title} detailed sample tour flyer`} />
+              <p className={styles.flyerCaption}>Sample itinerary shown for trip inspiration. Contact us for current pricing, dates and availability.</p>
             </div>
 
             <section className={styles.fullDetails}>
