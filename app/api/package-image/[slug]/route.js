@@ -1,21 +1,29 @@
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 
+const clearImages = {
+  'dubai': '/images/packages/dubai.webp',
+  'hanoi-sapa': '/images/packages/hanoi-sapa.webp',
+  'indochina-tricity': '/images/packages/indochina-tricity.webp'
+};
+
 const images = {
   'great-britain': 'great-britain.b64',
   'chongqing-chengdu': 'chongqing-chengdu.b64',
   'bangkok': 'bangkok.b64',
-  'dubai': 'dubai.b64',
-  'hanoi-sapa': 'hanoi-sapa.b64',
-  'indochina-tricity': 'indochina-tricity.b64',
   'bali': 'bali.b64',
   'boracay': 'boracay.b64',
   'singapore-malaysia': 'singapore-malaysia.b64',
   'bangkok-city-escape': 'bangkok-city-escape.b64'
 };
 
-export async function GET(_request, { params }) {
+export async function GET(request, { params }) {
   const { slug } = await params;
+
+  if (clearImages[slug]) {
+    return Response.redirect(new URL(clearImages[slug], request.url), 307);
+  }
+
   const file = images[slug];
   if (!file) return new Response('Not found', { status: 404 });
 
@@ -33,7 +41,7 @@ export async function GET(_request, { params }) {
       headers: {
         'Content-Type': contentType,
         'Content-Length': String(bytes.length),
-        'Cache-Control': 'no-store, max-age=0'
+        'Cache-Control': 'public, max-age=3600'
       }
     });
   } catch (error) {
