@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation';
 import { brand } from '../../site-data';
 import { getPackage, packages } from '../package-data';
+import { getPackageCover } from '../package-covers';
 import styles from './package-detail.module.css';
 
 export function generateStaticParams() {
@@ -11,6 +12,7 @@ export default async function PackageDetailPage({ params }) {
   const { slug } = await params;
   const pkg = getPackage(slug);
   if (!pkg) notFound();
+  const cover = getPackageCover(slug);
 
   return (
     <main className={styles.page}>
@@ -44,9 +46,23 @@ export default async function PackageDetailPage({ params }) {
         <div className={styles.detailGrid}>
           <div>
             <div className={styles.flyerCard}>
-              <div className={styles.flyerLabel}>Detailed sample package</div>
-              <img src={`${pkg.image}?v=20260914`} alt={`${pkg.title} detailed sample tour flyer`} />
-              <p className={styles.flyerCaption}>Sample itinerary shown for trip inspiration. Contact us for current pricing, dates and availability.</p>
+              <div className={styles.flyerLabel}>Package overview</div>
+              <div className={styles.packageVisual}>
+                <img src={cover?.src || pkg.image} alt={`${pkg.title} destination`} />
+                <div className={styles.visualShade} />
+                <div className={styles.visualCopy}>
+                  <span>{pkg.eyebrow}</span>
+                  <h2>{pkg.title}</h2>
+                  <p>{pkg.duration}</p>
+                </div>
+              </div>
+              <div className={styles.visualSummary}>
+                <p>{pkg.description}</p>
+                <div className={styles.visualHighlights}>
+                  {pkg.highlights.map((item) => <span key={item}>✓ {item}</span>)}
+                </div>
+              </div>
+              {cover?.creditUrl ? <a className={styles.photoCredit} href={cover.creditUrl} target="_blank" rel="noreferrer">Photo: {cover.credit}</a> : null}
             </div>
 
             <section className={styles.fullDetails}>
