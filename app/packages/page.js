@@ -1,5 +1,6 @@
 import { brand } from '../site-data';
 import { packages } from './package-data';
+import { getPackageCover } from './package-covers';
 import styles from './packages.module.css';
 
 export const metadata = {
@@ -36,7 +37,7 @@ export default function PackagesPage() {
           </div>
           <aside className={styles.heroCard}>
             <strong>Find a trip you love.</strong>
-            <span>Open any package to see the detailed sample flyer, then send us the package name and your preferred travel dates.</span>
+            <span>Open any package to see its detailed sample itinerary, then send us the package name and your preferred travel dates.</span>
             <a href="/#contact">Plan My Trip →</a>
           </aside>
         </div>
@@ -47,30 +48,33 @@ export default function PackagesPage() {
           <div className={styles.sectionHead}>
             <span className={styles.kicker}>10 travel ideas</span>
             <h2>Choose a starting point.</h2>
-            <p>Each package is a sample itinerary. Click any card to see its detailed flyer and ask us about current options for your trip.</p>
+            <p>Each package is a sample itinerary. Click any card for the full trip details and current options.</p>
           </div>
 
           <div className={styles.grid}>
-            {packages.map((pkg) => (
-              <a className={styles.card} href={`/packages/${pkg.slug}`} key={pkg.slug}>
-                <div className={styles.cardImage}>
-                  <img src={pkg.image} alt={`${pkg.title} sample tour package`} />
-                </div>
-                <div className={styles.cardBody}>
-                  <div>
-                    <span className={styles.eyebrow}>{pkg.eyebrow}</span>
-                    <h3>{pkg.title}</h3>
+            {packages.map((pkg) => {
+              const cover = getPackageCover(pkg.slug);
+              return (
+                <a className={styles.card} href={`/packages/${pkg.slug}`} key={pkg.slug}>
+                  <div className={styles.cardImage}>
+                    <img src={cover?.src || pkg.image} alt={`${pkg.title} destination`} loading="lazy" />
                   </div>
-                  <div className={styles.meta}><span>{pkg.duration}</span><span>Sample itinerary</span></div>
-                  <p>{pkg.description}</p>
-                  <div className={styles.highlights}>{pkg.highlights.map((item) => <span key={item}>{item}</span>)}</div>
-                  <div className={styles.cardCta}>
-                    <strong>Contact us for latest pricing & availability</strong>
-                    <span className={styles.view}>View Details →</span>
+                  <div className={styles.cardBody}>
+                    <div>
+                      <span className={styles.eyebrow}>{pkg.eyebrow}</span>
+                      <h3>{pkg.title}</h3>
+                    </div>
+                    <div className={styles.meta}><span>{pkg.duration}</span><span>Sample itinerary</span></div>
+                    <p>{pkg.description}</p>
+                    <div className={styles.highlights}>{pkg.highlights.map((item) => <span key={item}>{item}</span>)}</div>
+                    <div className={styles.cardCta}>
+                      <strong>Contact us for latest pricing & availability</strong>
+                      <span className={styles.view}>View Details →</span>
+                    </div>
                   </div>
-                </div>
-              </a>
-            ))}
+                </a>
+              );
+            })}
           </div>
 
           <div className={styles.customCta}>
